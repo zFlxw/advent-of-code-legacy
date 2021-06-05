@@ -62,7 +62,6 @@ public class Day03 extends AocModule {
 
     private void problem02(String rawInput) {
         int maxLength = rawInput.length() + 1;
-        // int maxLength = rawInput.length();
         int[][] houses = new int[maxLength][maxLength];
 
         int santaX = maxLength / 2;
