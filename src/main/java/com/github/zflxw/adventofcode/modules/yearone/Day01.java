@@ -9,9 +9,23 @@ import java.util.List;
 public class Day01 extends AocModule {
     @Override
     public void solution(String rawInput, List<String> input) {
-        System.out.println("It worked!");
+        int story = 0;
+        int basementFirst = 0;
 
-        System.out.println("RAW: " + rawInput);
-        System.out.println("LINES: " + input.size());
+        int i = 0;
+        for (char c : rawInput.toCharArray()) {
+            i++;
+            if (c == '(') {
+                story++;
+            } else {
+                story--;
+            }
+
+            if (story < 0 && basementFirst == 0)
+                basementFirst = i;
+        }
+
+        System.out.println("Story: " + story);
+        System.out.println("First Basement: " + basementFirst);
     }
 }
