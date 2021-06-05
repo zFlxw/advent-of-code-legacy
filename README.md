@@ -24,3 +24,5 @@ public class Day04 extends AocModule {
     }
 }
 ```
+    
+P.S.: You have to create your input as a .txt file in the appropriate direcotry (resources/<year>/<day>.txt)
