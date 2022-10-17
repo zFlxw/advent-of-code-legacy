@@ -1,4 +1,4 @@
-package com.github.zflxw.adventofcode.modules.yearone;
+package com.github.zflxw.adventofcode.modules.y2015;
 
 import com.github.zflxw.adventofcode.utils.AocModule;
 import com.github.zflxw.adventofcode.utils.Module;
