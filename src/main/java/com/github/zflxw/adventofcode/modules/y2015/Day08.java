@@ -12,24 +12,26 @@ public class Day08 extends AocModule {
     public void solution(String rawInput, List<String> input) {
         long codeLength = 0;
         long inMemoryLength = 0;
-
+        long encodedLength = 0;
         for (String string : input) {
             codeLength += string.length();
-            String content = string.substring(1, string.length() - 1)
+            String decodeContent = string.substring(1, string.length() - 1)
                     .replaceAll("\\\\", "@")
                     .replaceAll("@\\\"", "!")
                     .replaceAll("@@", "#")
                     .replaceAll("@x..", "%");
 
-            inMemoryLength += content.length();
+            inMemoryLength += decodeContent.length();
+            String encodeContent = string
+                    .replaceAll("^\"", "!@!")
+                    .replaceAll("\"$", "!@!")
+                    .replaceAll("\\\\", "@@")
+                    .replaceAll("\"", "@!");
+
+            encodedLength += encodeContent.length();
         }
 
-        System.out.println("Code Length: " + codeLength);
-        System.out.println("In Memory Length: " + inMemoryLength);
-        System.out.println("Difference: " + (codeLength - inMemoryLength));
-    }
-
-    private boolean isValidHex(char c) {
-        return Character.isDigit(c) || (c >= 65 && c <= 70) || (c >= 97 && c <= 102);
+        System.out.println("Difference (Part 1): " + (codeLength - inMemoryLength));
+        System.out.println("Difference (Part 2): " + (encodedLength - codeLength));
     }
 }
