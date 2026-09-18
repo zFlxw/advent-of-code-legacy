@@ -23,23 +23,28 @@ public class Day10 extends AocModule {
     private String lookAndSee(String input) {
         StringBuilder out = new StringBuilder();
         int n = 0;
+        int i = 0;
         char last = 0;
-        for (int i = 0; i < input.toCharArray().length; i++) {
-            char c = input.toCharArray()[i];
+
+        while (i < input.length()) {
+            char c = input.charAt(i);
             if (last == 0) {
                 last = c;
                 n = 1;
+                i++;
                 continue;
             }
 
             if (c == last) {
                 n++;
+                i++;
                 continue;
             }
 
             out.append(n).append(last);
             n = 1;
             last = c;
+            i++;
         }
 
         out.append(n).append(last);
