@@ -1,25 +1,38 @@
 plugins {
     id 'java'
-    id 'org.jetbrains.kotlin.jvm' version '1.5.0'
+    id 'application'
 }
 
-group 'com.github.zflxw'
-version '1.0.0'
+group = 'com.github.zflxw'
+version = '1.0.0'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+application {
+    mainClass = 'com.github.zflxw.adventofcode.ModuleLoader'
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib"
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    testImplementation platform('org.junit:junit-bom:5.13.4')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
     implementation 'net.oneandone.reflections8:reflections8:0.11.7'
-    implementation 'commons-codec:commons-codec:1.15'
-
+    implementation 'commons-codec:commons-codec:1.19.0'
 }
 
-test {
+tasks.named('test') {
     useJUnitPlatform()
+}
+
+tasks.named('run') {
+    standardInput = System.in
 }
